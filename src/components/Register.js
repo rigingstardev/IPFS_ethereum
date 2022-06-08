@@ -1,6 +1,8 @@
 import {useContext, useState} from 'react'
 import {Link} from 'react-router-dom'
 import {UserContext} from '../context/UserContext';
+import "../styles/register.css";
+
 const Register = () => {
     const {registerUser, wait} = useContext(UserContext);
     const [errMsg, setErrMsg] = useState(false);
@@ -8,7 +10,9 @@ const Register = () => {
     const [formData, setFormData] = useState({
         name:'',
         email:'',
-        password:''
+        password:'',
+        sex:'',
+        address:''
     });
 
     const onChangeInput = (e) => {
@@ -41,7 +45,7 @@ const Register = () => {
     }
 
     return (
-        <div className="myform">
+        <div className="rcontainer">
             <h2>Sign Up</h2>
             <form onSubmit={submitForm}>
                 <label htmlFor="name">Name:</label>
@@ -50,6 +54,10 @@ const Register = () => {
                 <input type="email" name="email" onChange={onChangeInput} placeholder="Your email" id="email" value={formData.email} required />
                 <label htmlFor="password">Password:</label>
                 <input type="password" name="password" onChange={onChangeInput} placeholder="New password" id="password" value={formData.password} required />
+                <label htmlFor="sex">Sex</label>
+                <input type="text" name="sex" onChange={onChangeInput} placeholder="Your Sex" id="sex" value={formData.sex} required />
+                <label htmlFor="address">Address</label>
+                <input type="text" name="address" onChange={onChangeInput} placeholder="Your Address" id="address" value={formData.address} required />
                 {successMsg && <div className="success-msg">{successMsg}</div>}
                 {errMsg && <div className="err-msg">{errMsg}</div>}
                 <button type="submit" disabled={wait}>Sign Up</button>

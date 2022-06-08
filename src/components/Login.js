@@ -1,6 +1,8 @@
 import {useState,useContext} from 'react';
 import { Link } from 'react-router-dom';
 import {UserContext} from '../context/UserContext';
+import "../styles/register.css";
+
 const Login = () => {
     const {loginUser, wait, loggedInCheck} = useContext(UserContext);
     const [redirect, setRedirect] = useState(false);
@@ -36,7 +38,7 @@ const Login = () => {
     }
 
     return (
-        <div className="myform">
+        <div className="rcontainer">
             <h2>Login</h2>
             <form onSubmit={submitForm}>
                 <label htmlFor="email">Email:</label>
